@@ -22,9 +22,9 @@ jobs:
         run: npm ci
 
       - name: Run reminder script
-          env:
-            SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-            NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
-            NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
-            LOOKAHEAD_DAYS: "7"
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+          NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
+          LOOKAHEAD_DAYS: "7"
         run: node reminders.js
