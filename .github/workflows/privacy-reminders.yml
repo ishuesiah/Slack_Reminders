@@ -1,0 +1,30 @@
+name: Privacy & Security Reminders
+
+on:
+  schedule:
+    - cron: "0 19 * * 1"  # Mondays 19:00 UTC = 11:00 PST
+  workflow_dispatch: {}
+
+jobs:
+  send-reminders:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run reminder script
+          env:
+            SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+            NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+            NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
+            LOOKAHEAD_DAYS: "7"
+        run: node reminders.js
