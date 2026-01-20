@@ -40,7 +40,7 @@ const DONE_STATUS_NAME = process.env.DONE_STATUS_NAME || "Done";
 
 // Notion property names (change these if your DB columns are named differently)
 const PROP_TITLE = "Name";
-const PROP_NEXT_DUE = "Next due (date)";
+const PROP_NEXT_DUE = "Next due";
 const PROP_STATUS = "Status";
 const PROP_TYPE = "Type";
 
