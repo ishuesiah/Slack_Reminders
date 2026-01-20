@@ -1,18 +1,13 @@
 {
   "name": "slack-notifications",
   "version": "1.0.0",
-  "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "reminders": "node reminders.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
   "dependencies": {
-    "@notionhq/client": "^5.7.0",
-    "@slack/web-api": "^7.13.0",
-    "dayjs": "^1.11.19",
-    "dotenv": "^17.2.3"
+    "@notionhq/client": "^2.2.15",
+    "dayjs": "^1.11.13",
+    "dotenv": "^16.4.5"
   }
 }
