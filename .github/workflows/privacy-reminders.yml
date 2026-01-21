@@ -27,4 +27,7 @@ jobs:
           NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
           NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
           LOOKAHEAD_DAYS: "7"
+
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+          SLACK_DM_USER_IDS: ${{ secrets.SLACK_DM_USER_IDS }}
         run: node reminders.js
