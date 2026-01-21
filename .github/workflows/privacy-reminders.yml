@@ -2,7 +2,9 @@ name: Privacy & Security Reminders
 
 on:
   schedule:
-    - cron: "0 19 * * 1"  # Mondays 19:00 UTC = 11:00 PST
+    # GitHub Actions cron is UTC.
+    # 19:00 UTC = 11:00am Pacific during Standard Time.
+    - cron: "0 19 * * 1"
   workflow_dispatch: {}
 
 jobs:
@@ -23,11 +25,15 @@ jobs:
 
       - name: Run reminder script
         env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
           NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
           NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
           LOOKAHEAD_DAYS: "7"
 
+          # Channel digest (incoming webhook)
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+
+          # DMs (bot token + DM targets)
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
           SLACK_DM_USER_IDS: ${{ secrets.SLACK_DM_USER_IDS }}
+
         run: node reminders.js
